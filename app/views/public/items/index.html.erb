@@ -1,0 +1,24 @@
+<div class="mt-5 ml-5">
+
+  <div class="d-flex ml-5">
+  <h2>商品一覧</h2><h5>(全<%= @amount %>件)</h5>
+  </div>
+
+<div class="container mt-5">
+<div class="row">
+
+    <% @items.each do |item| %>
+    <div class="col-3">
+      <%= link_to public_item_path(item.id) do %>
+      <h5><%= image_tag item.image, size: "250x150" %></h5>
+      <% end %>
+      <h5><%= item.name %></h5>
+      <h5>¥<%= item.price %></h5>
+      </div>
+    <% end %>
+    </div>
+    </div>
+     </div>
+
+
+

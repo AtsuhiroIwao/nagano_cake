@@ -1,0 +1,72 @@
+<div class="mt-5 ml-5">
+<h4>会員情報編集</h4>
+</div>
+
+<%= form_with model: @customer,url:public_customer_path,method: :patch do |f| %>
+<div class="container mt-5">
+<div class="row">
+<div class="col-8">
+<table class="table table-borderless">
+  <div class="field">
+    <tr>
+  <th>名前</th>
+  <td><%= f.text_field :last_name %>    　<%= f.text_field :first_name %></td>
+  </tr>
+</div>
+
+
+<div class="field">
+  <tr>
+  <th>フリガナ</th>
+  <td><%= f.text_field :last_name_kana %> 　<%= f.text_field :first_name_kana %></td>
+  </tr>
+</div>
+
+<div class="field">
+  <tr>
+  <th>郵便番号（ハイフンなし)</th>
+  <td><%= f.text_field :postal_code %></td>
+  </tr>
+</div>
+
+<div class="field">
+  <tr>
+  <th>住所</th>
+  <td><%= f.text_field :address %></td>
+  </tr>
+</div>
+
+<div class="field">
+  <tr>
+  <th>電話番号</th>
+  <td><%= f.text_field :telephone_number %></td>
+  </tr>
+</div>
+
+<div class="field">
+    <tr>
+    <th>メールアドレス</th>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+  </div>
+
+
+</table>
+</div>
+</div>
+</div>
+
+
+<div class="mt-5 ml-5 form-inline">
+<div class="mr-5 actions">　　　　　　　　　　　　　　　　　　　　　　　<button class="btn btn-md btn-success" type="submit">編集内容を保存</button>
+</div>
+<% end %>
+
+<div class="ml-5 actions">
+  <%= link_to public_customer_confirm_path do %>
+    <button class="btn btn-md btn-danger" type="submit">
+      退会する
+    </button>
+  <% end %>
+</div>
+</div>

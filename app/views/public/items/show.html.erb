@@ -1,0 +1,24 @@
+
+<%= form_with model: @cart_item,url:public_cart_items_path do |f| %>
+    <div class="container">
+    <div class="row">
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <div class="col-5 mt-5">
+        <%= image_tag @item.image, size: "350x250" %>
+        </div>
+
+    <div class="col-7 mt-5">
+    <h3><%= @item.name %></h3>
+    <h5 class="mt-3"><%= @item.introduction %></h5>
+    <h4 class="mt-5 mb-5">¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込)</h4>
+
+    <%= f.select :amount,[['個数選択', ''], ['1', 1], ['2', 2], ['3', 3],['4',4],['5',5]] %>
+
+    <button class="btn btn-md btn-success ml-3" type="submit">
+    カートに入れる
+    </button>
+</div>
+</div>
+</div>
+<% end %>
+

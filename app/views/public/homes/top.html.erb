@@ -1,0 +1,29 @@
+<h5 class="text-center mt-5 mb-5">
+  ようこそ、naganoケーキへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧はできますが、<br>
+  購入には会員登録が必要になります。
+</h5>
+<%= image_tag 'mv.jpg', size: "1500x280" %>
+
+
+
+<h3 class="text-center mt-5">新着商品</h3><br>
+<!--<table class="table table-borderless m-5 ">-->
+<div class="container">
+  <div class="row">
+
+<% @items.each do |item| %>
+
+<!--<div class="d-flex flex-column bd-highlight mb-3">-->
+  <div class="col-2 m-4">
+<%= image_tag item.image, size: "200x100" %>
+<%= item.name %>
+¥<%= item.price %>
+</div>
+<!--</div>-->
+<% end %>
+</div>
+</div>
+<!--</table>-->
+

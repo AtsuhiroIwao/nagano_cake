@@ -1,0 +1,77 @@
+<h4 class="m-5">注文情報入力</h4>
+<h4 class="m-5">支払方法</h4>
+<%= form_with model: @order,url:public_order_confirm_path,method: :post do |f| %>
+
+<div class="field m-5">
+  <div class="radio-inline">
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <strong><%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></strong>
+  </div>
+  <div class="radio-inline">
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <strong><%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%></strong>
+  </div>
+</div>
+
+<h4 class="m-5">お届け先</h4>
+
+<div class="field m-5">
+  <div class="radio-inline">
+
+  <%= f.radio_button :address_number,0 %>
+    <strong><%= f.label :address_number_0, "ご自身の住所" %></strong>
+    <div class="ml-5">
+  〒<%= @customer.postal_code %>　<%= @customer.address %>
+  <%= @customer.last_name %><%= @customer.first_name %>
+  </div>
+  </div>
+  <div class="radio-inline mt-3">
+    <%= f.radio_button :address_number,1 %>
+    <strong><%= f.label :address_number_1, "登録先の住所" %></strong>
+    <div class="ml-5">
+    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address) %>
+    </div>
+  </div>
+  <div class="radio-inline mt-3">
+      <%= f.radio_button :address_number,2 %>
+      <strong><%= f.label :address_number_2, "新しいお届け先" %></strong>
+
+
+      <div class="row mt-1">
+      <div class="col-3">
+      <h6 class="ml-5">郵便番号（ハイフンなし）</h6>
+      </div>
+      <div class="col-3">
+      <%= f.text_field:postal_code %>
+      </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-3">
+      <h6 class="ml-5">住所</h6>
+      </div>
+      <div class="col-3">
+      <%= f.text_field:address,size:60 %>
+      </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-3">
+      <h6 class="ml-5">宛名</h6>
+      </div>
+      <div class="col-3">
+      <%= f.text_field:name %>
+      </div>
+      </div>
+  </div>
+
+  <div class="mt-5 ml-5">
+  <button class="btn btn-md btn-primary" type="submit">
+  確認画面へ進む
+  </button>
+  </div>
+
+</div>
+
+
+<% end %>
